@@ -1,5 +1,16 @@
 # TITAN Network Module - VPC Variables
 
+variable "instance_tenancy" {
+  default = "default"
+  description = <<-EOF
+    Instance tenancy for EC2 instances launched in this TITAN network's VPC.
+
+    Default: `default`.
+
+    See: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-instance.html
+  EOF
+}
+
 variable "network_id" {
   description = <<-EOF
     The second octet to use for this TITAN network.

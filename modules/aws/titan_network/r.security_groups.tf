@@ -4,13 +4,13 @@
 resource "aws_security_group" "ssh" {
   name = "titan_${var.name_short}_ssh_internal"
   description = "Network-Internal SSH Access in the ${var.name_fancy}."
-  vpc_id = "${aws_vpc.vpc.id}"
+  vpc_id = "${aws_vpc.default.id}"
 
   ingress {
-    protocol    = "tcp"
-    from_port   = 22
-    to_port     = 22
-    cidr_blocks = ["${aws_vpc.vpc.cidr_block}"]
+    protocol = "tcp"
+    from_port = 22
+    to_port = 22
+    cidr_blocks = ["${aws_vpc.default.cidr_block}"]
   }
 
   egress {
@@ -24,6 +24,6 @@ resource "aws_security_group" "ssh" {
     Name = "titan_${var.name_short}_ssh_internal"
     # atlas variables
     titan_network = "${var.name}"
-    titan_zone    = "${var.zone}"
+    titan_zone = "${var.zone}"
   }
 }
